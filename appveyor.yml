@@ -4,9 +4,9 @@ environment:
     PYTHON_VERSION: "2.7.8"
     PYTHON_ARCH: "32"
     
-    CONAN_UPLOAD: 1
     CONAN_REFERENCE: "bzip2/1.0.6"
-    CONAN_USERNAME: "lasote"
+    CONAN_UPLOAD: "https://api.bintray.com/conan/anton-matosov/general"
+    CONAN_USERNAME: "anton-matosov"
     CONAN_CHANNEL: "testing"
     CONAN_TOTAL_PAGES: 4
     CONAN_STABLE_BRANCH_PATTERN: "release/*"

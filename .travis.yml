@@ -5,9 +5,9 @@ sudo: required
 language: python
 env:
   global:
-    - CONAN_UPLOAD=1
+    - CONAN_UPLOAD="https://api.bintray.com/conan/anton-matosov/general"
+    - CONAN_USERNAME="anton-matosov"
     - CONAN_REFERENCE="bzip2/1.0.6"
-    - CONAN_USERNAME="lasote"
     - CONAN_CHANNEL="testing"
     - CONAN_TOTAL_PAGES=1
     - CONAN_STABLE_BRANCH_PATTERN="release/*"
@@ -25,6 +25,10 @@ env:
 
 matrix:
    include:
+       - os: osx 
+         osx_image: xcode8.3 # apple-clang 8.1
+         language: generic
+         env:
        - os: osx 
          osx_image: xcode8.2 # apple-clang 8.0
          language: generic
