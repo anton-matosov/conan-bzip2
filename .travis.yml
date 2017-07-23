@@ -5,7 +5,6 @@ sudo: required
 language: python
 env:
   global:
-    - CONAN_UPLOAD: "https://api.bintray.com/conan/anton-matosov/general"
     - CONAN_USERNAME: "anton-matosov"
     - CONAN_REFERENCE: "bzip2/1.0.6"
     - CONAN_CHANNEL: "testing"
