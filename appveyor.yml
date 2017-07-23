@@ -7,7 +7,7 @@ environment:
     CONAN_REFERENCE: "bzip2/1.0.6"
     CONAN_USERNAME: "anton-matosov"
     CONAN_CHANNEL: "testing"
-    CONAN_TOTAL_PAGES: 4
+    CONAN_TOTAL_PAGES: 8
     CONAN_STABLE_BRANCH_PATTERN: "release/*"
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     CONAN_VISUAL_VERSIONS: "15,14,12"
@@ -15,9 +15,13 @@ environment:
     
     matrix:
         - CONAN_CURRENT_PAGE: 1
-        - CONAN_CURRENT_PAGE: 2  
+        - CONAN_CURRENT_PAGE: 2
         - CONAN_CURRENT_PAGE: 3
         - CONAN_CURRENT_PAGE: 4
+        - CONAN_CURRENT_PAGE: 5
+        - CONAN_CURRENT_PAGE: 6
+        - CONAN_CURRENT_PAGE: 7
+        - CONAN_CURRENT_PAGE: 8
 
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
