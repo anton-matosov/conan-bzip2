@@ -7,21 +7,55 @@ environment:
     CONAN_REFERENCE: "bzip2/1.0.6"
     CONAN_USERNAME: "anton-matosov"
     CONAN_CHANNEL: "testing"
-    CONAN_TOTAL_PAGES: 8
     CONAN_STABLE_BRANCH_PATTERN: "release/*"
-    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    CONAN_VISUAL_VERSIONS: "15,14,12"
-    MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix, 4.9@x86_64@sjlj@posix, 4.9@x86@sjlj@posix, 4.9@x86@dwarf2@posix"
     
     matrix:
-        - CONAN_CURRENT_PAGE: 1
-        - CONAN_CURRENT_PAGE: 2
-        - CONAN_CURRENT_PAGE: 3
-        - CONAN_CURRENT_PAGE: 4
-        - CONAN_CURRENT_PAGE: 5
-        - CONAN_CURRENT_PAGE: 6
-        - CONAN_CURRENT_PAGE: 7
-        - CONAN_CURRENT_PAGE: 8
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix, 4.9@x86_64@sjlj@posix, 4.9@x86@sjlj@posix, 4.9@x86@dwarf2@posix"
+          CONAN_TOTAL_PAGES: 1
+          CONAN_CURRENT_PAGE: 1
+
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: 15
+          CONAN_TOTAL_PAGES: 4
+          CONAN_CURRENT_PAGE: 1
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: 15
+          CONAN_TOTAL_PAGES: 4
+          CONAN_CURRENT_PAGE: 2
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: 15
+          CONAN_CURRENT_PAGE: 3
+          CONAN_TOTAL_PAGES: 4
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: 15
+          CONAN_TOTAL_PAGES: 4
+          CONAN_CURRENT_PAGE: 4
+
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+          CONAN_VISUAL_VERSIONS: "14,12"
+          CONAN_TOTAL_PAGES: 6
+          CONAN_CURRENT_PAGE: 1
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: "14,12"
+          CONAN_TOTAL_PAGES: 6
+          CONAN_CURRENT_PAGE: 2
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: "14,12"
+          CONAN_TOTAL_PAGES: 6
+          CONAN_CURRENT_PAGE: 3
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: "14,12"
+          CONAN_TOTAL_PAGES: 6
+          CONAN_CURRENT_PAGE: 4
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: "14,12"
+          CONAN_TOTAL_PAGES: 6
+          CONAN_CURRENT_PAGE: 5
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_VISUAL_VERSIONS: "14,12"
+          CONAN_TOTAL_PAGES: 6
+          CONAN_CURRENT_PAGE: 6
 
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
