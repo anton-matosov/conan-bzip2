@@ -18,10 +18,7 @@ class Bzip2Conan(ConanFile):
     license="BSD-style license"
 
     def config(self):
-        try: # Try catch can be removed when conan 0.8 is released
-            del self.settings.compiler.libcxx
-        except: 
-            pass        
+        del self.settings.compiler.libcxx
 
     def source(self):
         zip_name = "bzip2-%s.tar.gz" % self.version
