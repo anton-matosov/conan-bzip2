@@ -39,8 +39,11 @@ class Bzip2Conan(ConanFile):
         cd_build = "cd %s/_build" % self.ZIP_FOLDER_NAME
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
         fpic = "-DFPIC=ON" if self.options.fPIC else ""
-        self.run('%s && cmake .. %s %s %s' % (cd_build, cmake.command_line, shared, fpic))
-        self.run("%s && cmake --build . %s" % (cd_build, cmake.build_config))
+        
+        cmake.configure(build_dir="./_build", args=[shared, fpic])
+        cmake.build(build_dir="./_build")
+        # self.run('%s && cmake .. %s %s %s' % (cd_build, cmake.command_line, ))
+        # self.run("%s && cmake --build . %s" % (cd_build, cmake.build_config))
 
     def package(self):
         # Copying zlib.h, zutil.h, zconf.h
