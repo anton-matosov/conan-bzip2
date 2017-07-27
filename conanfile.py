@@ -1,8 +1,8 @@
-from conans import ConanFile
+from conans import ConanFile, tools
 import os, shutil
 from conans.tools import download, unzip, replace_in_file, check_md5
 from conans import CMake
-
+from conans.util import files
 
 class Bzip2Conan(ConanFile):
     name = "bzip2"
@@ -33,17 +33,17 @@ class Bzip2Conan(ConanFile):
 
     def build(self):
         shutil.move("CMakeLists.txt", "%s/CMakeLists.txt" % self.ZIP_FOLDER_NAME)
-        cmake = CMake(self.settings)
 
-        self.run("cd %s &&  mkdir _build" % self.ZIP_FOLDER_NAME)
-        cd_build = "cd %s/_build" % self.ZIP_FOLDER_NAME
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
         fpic = "-DFPIC=ON" if self.options.fPIC else ""
-        
-        cmake.configure(build_dir="./_build", args=[shared, fpic])
-        cmake.build(build_dir="./_build")
-        # self.run('%s && cmake .. %s %s %s' % (cd_build, cmake.command_line, ))
-        # self.run("%s && cmake --build . %s" % (cd_build, cmake.build_config))
+
+        with tools.chdir(self.ZIP_FOLDER_NAME):
+            files.mkdir("_build")
+            with tools.chdir("_build"):
+                # cmake.configure(build_dir=".", args=[shared, fpic])
+                cmake = CMake(self)
+                cmake.configure(build_dir=".", source_dir="../")
+                cmake.build()
 
     def package(self):
         # Copying zlib.h, zutil.h, zconf.h
