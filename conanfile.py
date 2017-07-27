@@ -40,9 +40,8 @@ class Bzip2Conan(ConanFile):
         with tools.chdir(self.ZIP_FOLDER_NAME):
             files.mkdir("_build")
             with tools.chdir("_build"):
-                # cmake.configure(build_dir=".", args=[shared, fpic])
                 cmake = CMake(self)
-                cmake.configure(build_dir=".", source_dir="../")
+                cmake.configure(build_dir=".", source_dir="../", args=[shared, fpic])
                 cmake.build()
 
     def package(self):
